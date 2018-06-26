@@ -1,7 +1,7 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.awt.*; //form controls
+import java.awt.event.*; //button events
+import java.util.ArrayList; // for employee list
+import javax.swing.JOptionPane; // for alert
 
 public class GUI extends Frame implements ActionListener { //Classic user inteface, extends Frame for window and ActionListener for button events
     //Initializing form controls
@@ -28,6 +28,7 @@ public class GUI extends Frame implements ActionListener { //Classic user intefa
         yearLabel = new Label("Έτος πρόσληψης: " + employee.year);
         minimumHoursLabel = new Label("ΥΜΩ: " + employee.minimumMonthHours);
 
+        //add all controls to form
         add(firstNameLabel);
         add(lastNameLabel);
         add(salaryLabel);
@@ -66,6 +67,7 @@ public class GUI extends Frame implements ActionListener { //Classic user intefa
         setTitle("Εξέταση Java");
         setSize(400,200);
 
+        //show first employee
         firstEmployee();
 
         //add button click actions
@@ -82,16 +84,16 @@ public class GUI extends Frame implements ActionListener { //Classic user intefa
         if (evt.getActionCommand().equals("Υπολογισμός Μισθού")) {
             Employee employee = employees.get(empIndex);
             employee.extraHours = Integer.parseInt(extraHoursTF.getText());
-            JOptionPane.showMessageDialog(null, "Τελικός μισθός: " + employee.getSalary(), "Τελικός μισθός", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Τελικός μισθός: " + employee.getSalary(), "Τελικός μισθός", JOptionPane.PLAIN_MESSAGE); //show alert
         }
         else if (evt.getActionCommand().equals("Επόμενο")) {
             this.empIndex++;
-            if (this.empIndex == employees.size()) this.empIndex = 0;
+            if (this.empIndex == employees.size()) this.empIndex = 0; //avoid index error
             outputEmployee();
         }
         else if (evt.getActionCommand().equals("Προηγούμενο")) {
             this.empIndex--;
-            if (this.empIndex == -1) this.empIndex = employees.size() -1;
+            if (this.empIndex == -1) this.empIndex = employees.size() -1; //avoid index error
             outputEmployee();
         }
         System.out.println(evt.toString());

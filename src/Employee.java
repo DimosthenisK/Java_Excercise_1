@@ -10,6 +10,7 @@ public class Employee {
     public int extraHours;
 
     public Employee(String firstName, String lastName, float salary, String specialty, String year, int minimumMonthHours) {
+        //initialize employee data
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
@@ -19,6 +20,7 @@ public class Employee {
         this.extraHours = 0;
     }
 
+    //Calculate salary based on given form
     public double getSalary() {
         return this.salary + (this.extraHours / this.minimumMonthHours) * this.salary * 1.5;
     }
