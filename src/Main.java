@@ -8,13 +8,13 @@ public class Main {
     private ArrayList<Employee> employees;
 
     private static ArrayList<Employee> readEmployees(String fileName) {
-        ArrayList<Employee> employees = new ArrayList<Employee>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) {
+        ArrayList<Employee> employees = new ArrayList<Employee>(); //enpty Employee list
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) { //open file with UTF8 encoding
             String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                String[] tokens = line.split("#");
-                employees.add(
+            while ((line = br.readLine()) != null) { //while we have lines
+                System.out.println(line); //show line in console for debugging
+                String[] tokens = line.split("#"); //split file to tokens
+                employees.add( //add new employee to employee list
                         new Employee(
                                 tokens[0],
                                 tokens[1],
@@ -36,9 +36,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        //initialize GUI with employees list
         GUI gui = new GUI(readEmployees("C:/Users/demos/Desktop/java.txt"));
-
-
     }
 }

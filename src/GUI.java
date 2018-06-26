@@ -1,11 +1,10 @@
 import java.awt.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
-public class GUI extends Frame implements ActionListener {
+public class GUI extends Frame implements ActionListener { //Classic user inteface, extends Frame for window and ActionListener for button events
+    //Initializing form controls
     private Label firstNameLabel;
     private Label lastNameLabel;
     private Label salaryLabel;
@@ -19,6 +18,7 @@ public class GUI extends Frame implements ActionListener {
     private ArrayList<Employee> employees;
     private int empIndex = 0;
 
+    //Show first employee and add controls to form
     public void firstEmployee() {
         Employee employee = employees.get(empIndex);
         firstNameLabel = new Label("Όνομα: " + employee.firstName);
@@ -46,6 +46,7 @@ public class GUI extends Frame implements ActionListener {
         add(nextBtn);
     }
 
+    //show next-previous employee
     public void outputEmployee() {
         Employee employee = employees.get(empIndex);
         this.firstNameLabel.setText("Όνομα: " + employee.firstName);
@@ -58,6 +59,7 @@ public class GUI extends Frame implements ActionListener {
         extraHoursTF.setText("Υπερωρίες");
     }
 
+    //constructor with window parameters
     public GUI(ArrayList<Employee> employees) {
         this.employees = employees;
         setLayout(new FlowLayout());
@@ -66,6 +68,7 @@ public class GUI extends Frame implements ActionListener {
 
         firstEmployee();
 
+        //add button click actions
         getSalaryBtn.addActionListener(this);
         nextBtn.addActionListener(this);
         prevBtn.addActionListener(this);
@@ -73,6 +76,7 @@ public class GUI extends Frame implements ActionListener {
         setVisible(true);
     }
 
+    //handle button clicks based on button text
     @Override
     public void actionPerformed(ActionEvent evt) {
         if (evt.getActionCommand().equals("Υπολογισμός Μισθού")) {

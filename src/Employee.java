@@ -1,3 +1,5 @@
+//employee base class
+
 public class Employee {
     public String firstName;
     public String lastName;
