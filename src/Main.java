@@ -27,16 +27,17 @@ public class Main {
             }
         }
         catch (java.io.FileNotFoundException exc) {
-
+            System.out.println("Δεν βρέθηκε το αρχείο που ζητήθηκε");
         }
         catch (java.io.IOException exc) {
-
+            System.out.println("Υπήρξε κάποιο πρόβλημα στο διάβασμα του αρχείου");
         }
         return employees;
     }
 
     public static void main(String[] args) {
         //initialize GUI with employees list
-        GUI gui = new GUI(readEmployees("C:/Users/demos/Desktop/java.txt"));
+        String fileName = "C:/Users/demos/Desktop/java.txt";
+        GUI gui = new GUI(readEmployees(fileName), fileName);
     }
 }
